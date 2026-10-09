@@ -4,7 +4,7 @@ import Foundation
 import SwiftUI
 
 @MainActor
-final class AppCleanerModel: ObservableObject {
+final class AppDustModel: ObservableObject {
 
     @Published var apps: [AppInfo] = []
     @Published var selectedAppPath: String?

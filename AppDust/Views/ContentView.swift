@@ -2,7 +2,7 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 struct ContentView: View {
-    @EnvironmentObject private var model: AppCleanerModel
+    @EnvironmentObject private var model: AppDustModel
     @State private var pendingTrash = false
     @State private var pendingPermanent = false
 

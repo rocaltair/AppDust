@@ -75,7 +75,7 @@ enum ItemMatcher {
         let targetIsApple = (identity.bundleID ?? "").lowercased().hasPrefix("com.apple.")
         if !targetIsApple, lower.hasPrefix("com.apple.") { return nil }
         // 永不触碰自己
-        if lower.hasPrefix("com.rocaltair.appcleaner") { return nil }
+        if lower.hasPrefix("com.rocaltair.appdust") { return nil }
 
         if let bid = identity.bundleID?.lowercased(), !bid.isEmpty {
             if lower == bid {

@@ -196,13 +196,13 @@ enum CLIRunner {
 
     private static func printUsage() {
         print("""
-        AppCleaner \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")
+        AppDust \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")
 
         用法：
-          AppCleaner --list-apps [--json]        列出已安装应用
-          AppCleaner --scan /Applications/Foo.app [--json] [--no-system]
+          AppDust --list-apps [--json]        列出已安装应用
+          AppDust --scan /Applications/Foo.app [--json] [--no-system]
                                                  扫描某应用的关联文件
-          AppCleaner --trash <路径> [<路径>…]    把路径移到废纸篓
+          AppDust --trash <路径> [<路径>…]    把路径移到废纸篓
 
         选项：
           --json        以 JSON 输出

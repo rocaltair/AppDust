@@ -1,4 +1,4 @@
-# AppCleaner
+# AppDust
 
 macOS 应用数据清理工具：选中（或拖入）一个 `.app`，列出它在系统里留下的全部关联文件，勾选后一次性删除。
 用 Swift + SwiftUI 写，未沙盒化，纯本地运行，不需要网络。
@@ -35,20 +35,24 @@ macOS 应用数据清理工具：选中（或拖入）一个 `.app`，列出它�
 ./install.sh build    # 只构建，产物在 build/DerivedData/Build/Products/Release
 ```
 
-依赖 `xcodegen`（`brew install xcodegen`）与 Xcode。`project.yml` 是唯一事实来源，`AppCleaner.xcodeproj` 是生成物（已 gitignore）。
+依赖 `xcodegen`（`brew install xcodegen`）与 Xcode。`project.yml` 是唯一事实来源，`AppDust.xcodeproj` 是生成物（已 gitignore）。
 
-图标重新生成：
+图标由本地 mimg（MLX）出图，再按 macOS 图标网格裁成圆角方块：
 
 ```bash
-swift scripts/make-icon.swift AppCleaner/Resources   # 需要 macOS 自带 AppKit/iconutil
+~/bin/mimg -m flux2-klein-4b-4bit -S 1024x1024 -s 4 -o /tmp/icon.png "flat vector app icon ... full bleed gradient ... no text"
+swift scripts/make-icon.swift /tmp/icon.png AppDust/Resources AppDust
 ```
+
+`scripts/make-icon.swift` 会自动裁掉四周白边、套 824/1024 的圆角遮罩加投影，输出多尺寸 `.icns`。
+原始出图放在 `assets/AppDust-icon-source.png`。
 
 ## 命令行
 
 同一个二进制带参数启动时不进 GUI，直接跑扫描（便于批量检查，也是本项目的验证入口）：
 
 ```bash
-APP=/Applications/AppCleaner.app/Contents/MacOS/AppCleaner
+APP=/Applications/AppDust.app/Contents/MacOS/AppDust
 
 $APP --list-apps [--json]                      # 列出已安装应用
 $APP --scan /Applications/Foo.app [--json] [--no-system]
@@ -63,4 +67,4 @@ $APP --scan <app> --home <假主目录>            # 用指定目录代替 ~ 做
 - 未沙盒化，读写自己的 `~/Library` 不需要授权。
 - 部分系统保护目录（通讯录、通话记录、CloudDocs 等）会被 TCC 拒绝，界面右上角会显示「N 处无法访问」，跳过即可，不影响清理。
 - 删除 `/Applications` 下的应用或 `/Library` 下的数据：前者受「App 管理」保护、后者需要管理员密码，均按系统提示操作。
-- 如果希望扫描/删除更彻底（例如其它用户的容器），可在「系统设置 → 隐私与安全性」里给 AppCleaner 授予「完全磁盘访问权限」。
+- 如果希望扫描/删除更彻底（例如其它用户的容器），可在「系统设置 → 隐私与安全性」里给 AppDust 授予「完全磁盘访问权限」。

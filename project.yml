@@ -1,4 +1,4 @@
-name: AppCleaner
+name: AppDust
 
 options:
   bundleIdPrefix: com.rocaltair
@@ -21,18 +21,18 @@ settings:
     ALWAYS_SEARCH_USER_PATHS: NO
 
 targets:
-  AppCleaner:
+  AppDust:
     type: application
     platform: macOS
     sources:
-      - path: AppCleaner
+      - path: AppDust
         excludes:
           - "Info.plist"
     settings:
       base:
-        INFOPLIST_FILE: AppCleaner/Info.plist
-        PRODUCT_BUNDLE_IDENTIFIER: com.rocaltair.AppCleaner
-        PRODUCT_NAME: AppCleaner
+        INFOPLIST_FILE: AppDust/Info.plist
+        PRODUCT_BUNDLE_IDENTIFIER: com.rocaltair.AppDust
+        PRODUCT_NAME: AppDust
         ENABLE_APP_SANDBOX: NO
         COMBINE_HIDPI_IMAGES: YES
         LD_RUNPATH_SEARCH_PATHS:
@@ -40,10 +40,10 @@ targets:
           - "@executable_path/../Frameworks"
 
 schemes:
-  AppCleaner:
+  AppDust:
     build:
       targets:
-        AppCleaner: all
+        AppDust: all
     run:
       config: Release
     archive:

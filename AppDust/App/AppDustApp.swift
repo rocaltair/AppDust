@@ -2,20 +2,20 @@ import AppKit
 import SwiftUI
 
 @main
-enum AppCleanerMain {
+enum AppDustMain {
     static func main() {
         if CLIRunner.shouldRun {
             exit(CLIRunner.run())
         }
-        AppCleanerApp.main()
+        AppDustApp.main()
     }
 }
 
-struct AppCleanerApp: App {
-    @StateObject private var model = AppCleanerModel()
+struct AppDustApp: App {
+    @StateObject private var model = AppDustModel()
 
     var body: some Scene {
-        WindowGroup("AppCleaner") {
+        WindowGroup("AppDust") {
             ContentView()
                 .environmentObject(model)
         }

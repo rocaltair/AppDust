@@ -3,7 +3,7 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 struct DetailView: View {
-    @EnvironmentObject private var model: AppCleanerModel
+    @EnvironmentObject private var model: AppDustModel
     @Binding var pendingTrash: Bool
     @Binding var pendingPermanent: Bool
     @State private var showErrors = false
@@ -201,7 +201,7 @@ struct DetailView: View {
 
 /// 未选择应用时的拖放入口。
 struct DropPlaceholder: View {
-    @EnvironmentObject private var model: AppCleanerModel
+    @EnvironmentObject private var model: AppDustModel
     @State private var targeted = false
 
     var body: some View {
@@ -213,7 +213,7 @@ struct DropPlaceholder: View {
             Text("把 .app 拖到这里，或在左侧选择应用")
                 .font(.title3)
 
-            Text("AppCleaner 会扫描容器、缓存、偏好设置、日志、启动项等关联文件，勾选后一并清理。")
+            Text("AppDust 会扫描容器、缓存、偏好设置、日志、启动项等关联文件，勾选后一并清理。")
                 .font(.callout)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)

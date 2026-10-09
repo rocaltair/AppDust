@@ -93,7 +93,7 @@ enum RemovalService {
     private static func runPrivilegedScript(_ items: [ScanItem]) -> [RemovalResult] {
         let fm = FileManager.default
         let supportDir = fm.homeDirectoryForCurrentUser
-            .appendingPathComponent("Library/Caches/com.rocaltair.AppCleaner", isDirectory: true)
+            .appendingPathComponent("Library/Caches/com.rocaltair.AppDust", isDirectory: true)
         try? fm.createDirectory(at: supportDir, withIntermediateDirectories: true)
         let scriptURL = supportDir.appendingPathComponent("privileged-remove-\(UUID().uuidString).sh")
 

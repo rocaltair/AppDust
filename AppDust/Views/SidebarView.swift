@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct SidebarView: View {
-    @EnvironmentObject private var model: AppCleanerModel
+    @EnvironmentObject private var model: AppDustModel
 
     var body: some View {
         VStack(spacing: 0) {

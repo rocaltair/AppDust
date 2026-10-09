@@ -1,0 +1,5 @@
+build/
+AppCleaner.xcodeproj/
+*.xcuserstate
+xcuserdata/
+.DS_Store
